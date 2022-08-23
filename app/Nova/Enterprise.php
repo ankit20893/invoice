@@ -11,6 +11,7 @@ use Laravel\Nova\Fields\MorphMany;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Pdmfc\NovaFields\ActionButton;
 
 class Enterprise extends Resource
 {
@@ -60,6 +61,8 @@ class Enterprise extends Resource
             MorphMany::make('phones'),
             MorphMany::make('banks'),
             HasMany::make('invoices'),
+            ActionButton::make('Action')->text('Generate Invoice')
+                ->action(BillGenerate::class, $this->id)
         ];
     }
 

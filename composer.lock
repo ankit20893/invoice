@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1ddc1258c3e2b2590522d6bcc1eabbd",
+    "content-hash": "6fb6d7e1a3b69f7b14776460be67ea27",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -2917,6 +2917,59 @@
                 }
             ],
             "time": "2022-08-01T11:03:24+00:00"
+        },
+        {
+            "name": "pdmfc/nova-action-button",
+            "version": "v0.7.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pdmfc/nova-action-button.git",
+                "reference": "f938ea0961589aec1954468ad1eb48751a7fd7b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pdmfc/nova-action-button/zipball/f938ea0961589aec1954468ad1eb48751a7fd7b5",
+                "reference": "f938ea0961589aec1954468ad1eb48751a7fd7b5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pdmfc\\NovaFields\\ActionButtonFieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pdmfc\\NovaFields\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Santos",
+                    "email": "joao.santos@pdmfc.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel Nova field to run actions.",
+            "homepage": "https://github.com/pdmfc/nova-action-button",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/pdmfc/nova-action-button/issues",
+                "source": "https://github.com/pdmfc/nova-action-button/tree/v0.7.4"
+            },
+            "time": "2021-10-09T13:32:17+00:00"
         },
         {
             "name": "phenx/php-font-lib",

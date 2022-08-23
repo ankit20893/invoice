@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\BillGenerate;
+use App\Nova\Actions\ViewBill;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Pdmfc\NovaFields\ActionButton;
 
 class Invoice extends Resource
 {
@@ -46,6 +48,8 @@ class Invoice extends Resource
             Text::make('To'),
             Text::make('Truck Number', 'truck_no'),
             Text::make('Driver Name', 'driver_name'),
+            ActionButton::make('Action')->text('View Invoice')
+                ->action(ViewBill::class, $this->id),
         ];
     }
 
@@ -90,7 +94,9 @@ class Invoice extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new ViewBill)->confirmButtonText('View Bill'),
+        ];
     }
 
     /**
@@ -117,6 +123,6 @@ class Invoice extends Resource
      */
     public function authorizedToUpdate(Request $request)
     {
-        return false;
+        return true;
     }
 }
