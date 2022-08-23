@@ -1,4 +1,5 @@
-1. git clone 
+1. Install XAMPP
+2. git clone inside /htdocs directory
 2. composer install
 3. cp .env.example .env
 2. php artisan generate:key
