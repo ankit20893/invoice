@@ -13,7 +13,7 @@ use App\Http\Controllers\DownloadController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-\Laravel\Nova\Nova::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
