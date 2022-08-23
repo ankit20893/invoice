@@ -15,8 +15,6 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Schema::defaultStringLength(191);
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'nova');
-
     }
 
     /**
