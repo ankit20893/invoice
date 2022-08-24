@@ -53,16 +53,19 @@ class Enterprise extends Resource
                 ->rules('required', 'max:255'),
             Textarea::make('Address')
             ->rules('required'),
-            Text::make('GST Number', 'gst_no'),
-            Text::make('PAN Number', 'pan_no'),
+            Text::make('Email')->onlyOnForms(),
+            Text::make('Owner Name', 'owner_name')->onlyOnForms(),
+            Text::make('G.R. No.', 'gr_no')->onlyOnForms(),
+            Text::make('GST Number', 'gst_no')->rules('required'),
+            Text::make('PAN Number', 'pan_no')->rules('required'),
             Boolean::make('Status')
                 ->default(true)
             ->sortable(),
-            MorphMany::make('phones'),
-            MorphMany::make('banks'),
+            MorphMany::make('phones')->rules('required'),
+            MorphMany::make('banks')->rules('required'),
             HasMany::make('invoices'),
             ActionButton::make('Action')->text('Generate Invoice')
-                ->action(BillGenerate::class, $this->id)
+                ->action(BillGenerate::class, $this->id)->onlyOnIndex()
         ];
     }
 

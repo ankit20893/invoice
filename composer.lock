@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6fb6d7e1a3b69f7b14776460be67ea27",
+    "content-hash": "ecf155847b811cbacc4a906d8d69f01f",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -337,6 +337,60 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.1"
             },
             "time": "2021-08-13T13:06:58+00:00"
+        },
+        {
+            "name": "digital-creative/conditional-container",
+            "version": "1.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dcasia/conditional-container.git",
+                "reference": "7e2e407d2de6596f086c00fa01288396b61a2e18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dcasia/conditional-container/zipball/7e2e407d2de6596f086c00fa01288396b61a2e18",
+                "reference": "7e2e407d2de6596f086c00fa01288396b61a2e18",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^3.12.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DigitalCreative\\ConditionalContainer\\ConditionalContainerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "DigitalCreative\\ConditionalContainer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Milewski"
+                }
+            ],
+            "description": "Provides an easy way to conditionally show and hide fields in your Nova resources.",
+            "keywords": [
+                "conditional",
+                "dependency",
+                "dynamic",
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/dcasia/conditional-container/issues",
+                "source": "https://github.com/dcasia/conditional-container/tree/1.4.3"
+            },
+            "time": "2022-05-07T14:01:25+00:00"
         },
         {
             "name": "doctrine/cache",

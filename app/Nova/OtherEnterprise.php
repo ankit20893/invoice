@@ -50,7 +50,7 @@ class OtherEnterprise extends Resource
                 ->rules('required', 'max:255'),
             Textarea::make('Address')
                 ->rules('required'),
-            Text::make('GST Number', 'gst_no'),
+            Text::make('GST Number', 'gst_no')->rules('required'),
             MorphMany::make('phones'),
             MorphMany::make('banks'),
         ];

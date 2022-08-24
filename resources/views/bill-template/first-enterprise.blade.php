@@ -60,7 +60,10 @@
                                 </div>
                                 <div style="width: 75%; text-align:center ;">
                                     <p style=" font-family: 'Rubik Dirt', cursive;   font-size: 78px; color: #970005;font-weight: 600;">{{ $invoice->enterprise->name }}</p>
-                                    <p style="font-size: 18px;color: #074a79;font-weight:800">{!! $invoice->enterprise->address !!}
+                                    <p style="font-size: 18px;color: #074a79;font-weight:800">
+                                        <span style="color: #000;">{!! $invoice->enterprise->address !!}</span><br/>
+                                        PHONE: {{ implode(', ', $invoice->enterprise->phones->pluck('number')->toArray()) }}<br/>
+                                        <span style="color: #000;">E-mail : {{ $invoice->enterprise->email }}</span>
                                     </p>
                                 </div>
                             </div>
@@ -133,15 +136,6 @@
                         </p>
                     </td>
                     @endforeach
-                    {{--<td style="width: 23%;margin-left: 10px;border: 2px solid #074a79;border-radius: 10px;padding: 10px;">
-                        <p style="color: #074a79;text-align: center;font-weight: 600;">
-                            BANK DETAILS :<br/>
-                            SYNDICATE BANK,<br/>
-                            Bhopa Road,Muzaffarnagar<br/>
-                            A/c no. : 87093070001237<br/>
-                            IFSC Code : SYNB0008709
-                        </p>
-                    </td>--}}
                 </tr>
             </table>
             <table>
@@ -228,22 +222,22 @@
                         </div>
                         <div style="width:100%;margin-top: 5px;margin-left: 10px;">
                             <div style="width: 10%;height: 110px;border: 2px solid #074a79;border-radius: 10px;">
-                                <p style="height:85px;margin-top: 40px;padding-left: 35px;">{{ $invoice->no_of_packets }}</p>
+                                <p style="height:85px;margin-top: 40px;text-align: center;">{{ $invoice->no_of_packets }}</p>
                             </div>
                             <div style="width: 30%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                                <p style="height:85px;margin-top: 40px;padding-left: 50px;">{{ $invoice->description }}</p>
-                                {{--<p style="    color: #970005;
+                                <p style="height:85px;margin-top: 40px;text-align: center;">{{ $invoice->description }}</p>
+                                <p style="    color: #074a79;
                                 font-weight: 600;
-                                margin: 0 0 10px 10px;">To pay RS.</p>--}}
+                                margin: -45px 0 10px 10px; text-align: center">To Pay: {{ $invoice->to_pay }}</p>
                             </div>
                             <div style="width: 20%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                                <p style="height:85px;margin-top: 40px;padding-left: 75px;">{{ $invoice->weight }} </p>
+                                <p style="height:85px;margin-top: 40px;text-align: center;">{{ $invoice->weight }} </p>
                             </div>
                             <div style="width: 10%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                                <p style="height:85px;margin-top: 40px;padding-left: 35px;">{{ $invoice->rate }} </p>
+                                <p style="height:85px;margin-top: 40px;text-align: center;">{{ $invoice->rate }} </p>
                             </div>
                             <div style="width: 25%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                                <p style="height:85px;margin-top: 40px;padding-left: 90px;">{{ $invoice->weight * $invoice->rate }}</p>
+                                <p style="height:85px;margin-top: 40px;text-align: center;">{{ ($invoice->weight/100) * $invoice->rate }}</p>
                                 <p style="width: 90%;
                             border-right: 1px solid #074a79;
                             height: 110px;"></p>
@@ -258,12 +252,15 @@
                                 </div>
                                 <div style="width: 100%;border: 2px solid #074a79;border-radius: 10px; margin-top: 3px;">
                                     <p style=" color: #970005;
-                            font-weight: 600; padding: 10px;height: 111px;"> Delivery :</p>
+                            font-weight: 600; padding: 10px;height: 111px;"> Delivery :<br/><br/>
+                                        {{--<span style="color: black; clear: both;display: inline-block;width: 100%;"></span>--}}
+                                        <span style="color: black; clear: both;display: inline-block;width: 100%;">{{ $invoice->delivery->name }}</span>
+                                        <span style="color: black; clear: both;display: inline-block;width: 100%;">{!! $invoice->delivery->address !!}</span></p>
                                     <div style="width: 100%;">
-                                        <p style="display: inline-block;color: #970005;font-weight: 600;margin:0 0 10px 10px;">GSTIN</p><p style="border-bottom: 2px dotted #970005;width: 86%;display: inline-block;"></p>
+                                        <p style="display: inline-block;color: #970005;font-weight: 600;margin:0 0 10px 10px;">GSTIN</p><p style="border-bottom: 2px dotted #970005;width: 86%;display: inline-block;">&nbsp;{{ $invoice->delivery->gst_no }}</p>
                                     </div>
                                     <div style="width: 100%;">
-                                        <p style="display: inline-block;color: #970005;font-weight: 600;margin:0 0 10px 10px;">Value of Goods</p><p style="border-bottom: 2px dotted #970005;width: 73%;display: inline-block;"></p>
+                                        <p style="display: inline-block;color: #970005;font-weight: 600;margin:0 0 10px 10px;">Value of Goods</p><p style="border-bottom: 2px dotted #970005;width: 73%;display: inline-block;">&nbsp;{{ $invoice->value_of_goods }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +299,7 @@
                                 height: 50px;
                                 display: flex;
                                 justify-content: center;
-                                align-items: center;">{{ $invoice->weight * $invoice->rate }}</div>
+                                align-items: center;">{{ ($invoice->weight/100) * $invoice->rate }}</div>
                                     <div></div>
                                 </div>
 
@@ -321,7 +318,7 @@
                                 height: 50px;
                                 display: flex;
                                 justify-content: center;
-                                align-items: center;"></div>
+                                align-items: center;">{{ $invoice->advance }}</div>
                                     <div></div>
                                 </div>
 
@@ -340,7 +337,7 @@
                                 height: 50px;
                                 display: flex;
                                 justify-content: center;
-                                align-items: center;">{{ $invoice->weight * $invoice->rate }}</div>
+                                align-items: center;">{{ (($invoice->weight/100) * $invoice->rate) - $invoice->advance }}</div>
                                     <div></div>
                                 </div>
                             </div>

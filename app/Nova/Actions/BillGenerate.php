@@ -5,12 +5,14 @@ namespace App\Nova\Actions;
 use App\Models\Invoice;
 use App\Models\OtherEnterprise;
 use Barryvdh\DomPDF\Facade\Pdf;
+use DigitalCreative\ConditionalContainer\ConditionalContainer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
@@ -58,7 +60,11 @@ class BillGenerate extends Action
         foreach ($models as $model) {
             $data = $fields->toArray();
             $data['enterprise_id'] = $model->id;
+            $data['gr_no'] = $model->gr_no;
             $invoice = Invoice::create($data);
+
+            $model->gr_no = $model->gr_no + 1;
+            $model->save();
         }
 
          return Action::redirect('/download/'.$invoice->id);
@@ -73,7 +79,6 @@ class BillGenerate extends Action
     {
         $otherEnterprises = OtherEnterprise::all()->pluck('name','id');
         return [
-            Text::make('G.R. No.', 'gr_no')->rules('required'),
             Date::make('Date', 'date')->rules('required'),
             Text::make('Bill No.', 'bill_no')->rules('required'),
             Text::make('From')->rules('required'),
@@ -82,11 +87,20 @@ class BillGenerate extends Action
             Text::make('Driver Name', 'driver_name')->rules('required'),
             Select::make('Consigner', 'consigner_id')->options($otherEnterprises)->rules('required'),
             Select::make('Consignee', 'consignee_id')->options($otherEnterprises)->rules('required'),
+            Select::make('Delivery', 'delivery_id')->options($otherEnterprises)->rules('required'),
             Number::make('No. of Packets', 'no_of_packets')->rules('required'),
             Text::make('HSV/SAC Code', 'hsv_sac_code')->rules('required'),
             Text::make('Description')->rules('required'),
+            Text::make('To Pay', 'to_pay'),
             Text::make('Weight')->rules('required'),
             Text::make('Rate')->rules('required'),
+            Text::make('Value of Goods', 'value_of_goods')->rules('required'),
+            Boolean::make('GST', 'is_gst'),
+            ConditionalContainer::make([ Boolean::make('IGST', 'igst') ])
+                ->if('is_gst = 1'),
+            ConditionalContainer::make([ Text::make('GST Percentage', 'gst_percentage') ])
+                ->if('is_gst = 1'),
+            Text::make('Advance'),
         ];
     }
 }

@@ -35,4 +35,12 @@ class Invoice extends Model
     {
         return $this->belongsTo(OtherEnterprise::class);
     }
+
+    /**
+     * @return BelongsTo
+     */
+    public function delivery(): BelongsTo
+    {
+        return $this->belongsTo(OtherEnterprise::class);
+    }
 }

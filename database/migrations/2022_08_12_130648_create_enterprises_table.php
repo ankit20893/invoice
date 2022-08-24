@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->longText('address');
+            $table->string('email')->nullable();
+            $table->string('owner_name')->nullable();
+            $table->string('gr_no')->nullable();
             $table->string('pan_no');
             $table->string('gst_no');
             $table->boolean('status')->default(1);

@@ -11,8 +11,8 @@ class DownloadController extends Controller
     public function download(Request $request, $invoice_id = null) {
         if ($invoice_id) {
             $invoice = Invoice::find($invoice_id);
-            $numberInWords = $this->numberToWords($invoice->weight * $invoice->rate);
-            if ($invoice->enterprise->name === 'ankit') {
+            $numberInWords = $this->numberToWords($invoice->value_of_goods);
+            if ($invoice->enterprise->id === 1) {
                 return view('bill-template.first-enterprise', compact('invoice', 'numberInWords'));
             } else {
                 return view('bill-template.second-enterprise', compact('invoice', 'numberInWords'));

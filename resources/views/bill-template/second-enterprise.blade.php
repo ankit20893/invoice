@@ -42,7 +42,10 @@
                         </div>
                         <div style="text-align:center; width: 65%;">
                             <p style=" font-family: 'Titan One', cursive;   font-size: 92px; color: #074a79;font-weight: 600;">{{ $invoice->enterprise->name }}</p>
-                            <p style="font-size: 18px;color: #074a79;font-weight:800;margin-bottom: 10px;">{!! $invoice->enterprise->address !!}
+                            <p style="font-size: 18px;color: #074a79;font-weight:800;margin-bottom: 10px;">
+                                <span style="color: #000;">{!! $invoice->enterprise->address !!}</span><br/>
+                                PHONE: {{ implode(', ', $invoice->enterprise->phones->pluck('number')->toArray()) }}<br/>
+                                <span style="color: #000;">E-mail : {{ $invoice->enterprise->email }}</span>
                             </p>
                         </div>
                         <div style="width: 20%;">
@@ -64,7 +67,7 @@
                                 text-align: center;
                                 border-top-left-radius: 8px;
                                 border-top-right-radius: 8px;">G.R. No.</p>
-                    <span>{{ $invoice->gr_no }}</span>
+                    <p style="text-align: center">{{ $invoice->gr_no }}</p>
                 </div>
                 <div style="border-bottom: 2px solid #074a79; width: 100%;
                             height: 65px;">
@@ -73,7 +76,7 @@
                                 color: #fff;
                                 width: 95%;
                                 text-align: center;">Date</p>
-                    <span>{{ $invoice->date }}</span>
+                    <p style="text-align: center">{{ $invoice->date }}</p>
                 </div>
                 <div style=" width: 100%;
                             height: 65px;">
@@ -82,7 +85,7 @@
                                 color: #fff;
                                 width: 95%;
                                 text-align: center;">Bill No.</p>
-                    <span>{{ $invoice->bill_no }}</span>
+                    <p style="text-align: center">{{ $invoice->bill_no }}</p>
                 </div>
             </div>
         </div>
@@ -96,9 +99,8 @@
                 </div>
                 <div style="width: 100%;">
                     <p style="display: inline-block;margin-right: 2px;color: #000;font-weight: 600;margin-bottom: 15px;">To</p>
-                    {{ $invoice->to }}
                     <p style="border-bottom: 2px dotted #000;width: 93.5%;display: inline-block;">
-
+                        {{ $invoice->to }}
                     </p>
                 </div>
                 <div style="width: 100%;">
@@ -120,7 +122,7 @@
                 <div style="width: 100%;">
                     <p style="display: inline-block;margin-right: 2px;color: #000;font-weight: 600;margin-bottom: 21px;">Name of Owner's :</p>
                     <p style="border-bottom: 2px dotted #000;width: 66%;display: inline-block;">
-
+                        {{ $invoice->enterprise->owner_name }}
                     </p>
                 </div>
             </div>
@@ -230,20 +232,26 @@
                     </div>
                 </div>
                 <div style="width:100%;margin-top: 5px;">
-                    <div style="width: 10%;height: 110px;border: 2px solid #074a79;border-radius: 10px;">{{ $invoice->no_of_packets }}</div>
-                    <div style="width: 10%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">{{ $invoice->hsv_sac_code }}</div>
+                    <div style="width: 10%;height: 110px;border: 2px solid #074a79;border-radius: 10px;">
+                        <p style="text-align: center; margin-top: 40px;">{{ $invoice->no_of_packets }}</p>
+                        </div>
+                    <div style="width: 10%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
+                        <p style="text-align: center; margin-top: 40px;">{{ $invoice->hsv_sac_code }}</p>
+                    </div>
                     <div style="width: 29%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                        <p style="height:85px">{{ $invoice->description }}</p>
-                        {{--<p style="    color: #074a79;
+                        <p style="text-align: center; margin-top: 40px;">{{ $invoice->description }}</p>
+                        <p style="    color: #074a79;
                                 font-weight: 600;
-                                margin: 0 0 10px 10px;">To pay RS.</p>--}}
+                                margin: 20px 0 10px 10px; text-align: center">To Pay: {{ $invoice->to_pay }}</p>
                     </div>
                     <div style="width: 10%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                        {{ $invoice->weight }}
+                        <p style="text-align: center; margin-top: 40px;">{{ $invoice->weight }}</p>
                     </div>
-                    <div style="width: 10%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;"> {{ $invoice->rate }}</div>
+                    <div style="width: 10%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
+                        <p style="text-align: center; margin-top: 40px;">{{ $invoice->rate }}</p>
+                    </div>
                     <div style="width: 25%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                        {{ $invoice->weight * $invoice->rate }}
+                        <p style="text-align: center; margin-top: 40px;">{{ ($invoice->weight/100) * $invoice->rate }}</p>
                     </div>
                 </div>
 
@@ -251,12 +259,15 @@
                     <div style="width:55%;">
                         <div style="width: 100%;border: 2px solid #074a79;border-radius: 10px; margin-top: 3px;">
                             <p style=" color: #074a79;
-                            font-weight: 600; padding: 10px;height: 180px;"> Delivery :</p>
+                            font-weight: 600; padding: 10px;height: 180px;"> Delivery :<br/>
+                                {{--<span style="color: black; clear: both;display: inline-block;width: 100%;"></span>--}}
+                                <span style="color: black; clear: both;display: inline-block;width: 100%;">{{ $invoice->delivery->name }}</span>
+                                <span style="color: black; clear: both;display: inline-block;width: 100%;">{!! $invoice->delivery->address !!}</span></p>
                             <div style="width: 100%;margin-bottom: 8px;">
-                                <p style="display: inline-block;color: #000;font-weight: 600;margin:0 0 10px 10px;">GSTIN</p><p style="border-bottom: 2px dotted #000;width: 86%;display: inline-block;"></p>
+                                <p style="display: inline-block;color: #000;font-weight: 600;margin:0 0 10px 10px;">GSTIN</p><p style="border-bottom: 2px dotted #000;width: 86%;display: inline-block;"> &nbsp;{{ $invoice->delivery->gst_no }}</p>
                             </div>
                             <div style="width: 100%;margin-bottom: 5px;">
-                                <p style="display: inline-block;color: #000;font-weight: 600;margin:0 0 10px 10px;">Value of Goods</p><p style="border-bottom: 2px dotted #000;width: 73%;display: inline-block;"></p>
+                                <p style="display: inline-block;color: #000;font-weight: 600;margin:0 0 10px 10px;">Value of Goods</p><p style="border-bottom: 2px dotted #000;width: 73%;display: inline-block;"> &nbsp;{{ $invoice->value_of_goods }}</p>
                             </div>
                         </div>
                     </div>
@@ -273,7 +284,12 @@
                             <div style="width:100%;
                                 padding: 5px;
                                 ">
-                                <p style="color: #074a79; font-weight:600;"> S.G.S.T. :</p>
+                                @php
+                                    $cgst = 0;
+                                    if ($invoice->is_gst && !$invoice->igst)
+                                        $cgst = ((($invoice->weight / 100) * $invoice->rate) * ($invoice->gst_percentage/2)) / 100;
+                                @endphp
+                                <p style="color: #074a79; font-weight:600;"> S.G.S.T. : {{ $invoice->is_gst && !$invoice->igst ?  ($invoice->gst_percentage / 2).'% - '. $cgst : '' }}</p>
                             </div>
                         </div>
 
@@ -281,7 +297,7 @@
                             <div style="width:100%;
                                 padding: 5px;
                                 ">
-                                <p style="color: #074a79; font-weight:600;"> C.G.S.T. :</p>
+                                <p style="color: #074a79; font-weight:600;"> C.G.S.T. : {{ $invoice->is_gst && !$invoice->igst ?  ($invoice->gst_percentage / 2).'% - '. $cgst : '' }}</p>
                             </div>
                         </div>
 
@@ -289,7 +305,11 @@
                             <div style="width:100%;
                                 padding: 5px;
                                 ">
-                                <p style="color: #074a79; font-weight:600;"> I.G.S.T. :</p>
+                                @php
+                                if ($invoice->is_gst)
+                                    $igst = ((($invoice->weight / 100) * $invoice->rate) * $invoice->gst_percentage) / 100;
+                                @endphp
+                                <p style="color: #074a79; font-weight:600;"> I.G.S.T. : {{ $invoice->is_gst && $invoice->igst ?  $invoice->gst_percentage.'% - '. $igst : '' }}</p>
                             </div>
                         </div>
 
@@ -297,7 +317,7 @@
                             <div style="width:100%;
                                 padding: 5px;
                                 ">
-                                <p style="color: #074a79; font-weight:600;"> TOTAL : {{ $invoice->weight * $invoice->rate }}</p>
+                                <p style="color: #074a79; font-weight:600;"> TOTAL : {{ (($invoice->weight / 100) * $invoice->rate) + $igst }}</p>
                             </div>
                         </div>
 
@@ -305,7 +325,7 @@
                             <div style="width:100%;
                                 padding: 5px;
                                 ">
-                                <p style="color: #074a79; font-weight:600;">  Advance:</p>
+                                <p style="color: #074a79; font-weight:600;">  Advance: {{ $invoice->advance }}</p>
                             </div>
                         </div>
 
@@ -314,7 +334,7 @@
 
                                 padding: 5px;
                                 ">
-                                <p style="color: #074a79; font-weight:600;"> Rs. To Pay : {{ $invoice->weight * $invoice->rate }}</p>
+                                <p style="color: #074a79; font-weight:600;"> Rs. To Pay : {{ ((($invoice->weight / 100) * $invoice->rate) + $igst) - $invoice->advance }}</p>
                             </div>
                         </div>
 

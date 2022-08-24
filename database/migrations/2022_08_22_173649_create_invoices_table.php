@@ -28,11 +28,19 @@ return new class extends Migration
             $table->foreign('consigner_id')->references('id')->on('other_enterprises')->onDelete('cascade');
             $table->unsignedBigInteger('consignee_id');
             $table->foreign('consignee_id')->references('id')->on('other_enterprises')->onDelete('cascade');
+            $table->unsignedBigInteger('delivery_id')->nullable();
+            $table->foreign('delivery_id')->references('id')->on('other_enterprises');
             $table->string('no_of_packets');
             $table->string('hsv_sac_code');
             $table->string('description');
+            $table->string('to_pay')->nullable();
             $table->string('weight');
             $table->string('rate');
+            $table->string('value_of_goods');
+            $table->boolean('is_gst')->default(false);
+            $table->boolean('igst')->nullable();
+            $table->string('gst_percentage')->nullable();
+            $table->string('advance')->nullable();
             $table->timestamps();
         });
     }
