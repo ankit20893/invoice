@@ -381,6 +381,48 @@
         </div>
 
     </div>
+    <div style="width: 100%;border: 2px solid #074a79;border-radius: 10px;margin-top: 10px;">
+        <p style="color: #074a79;font-weight: 600;padding: 10px; text-align: center"> TERMS & CONDITIONS</p>
+        <ol>
+            <li>The company does not take any reponsibility for leakage, breakage, salvage by rain water or weather. Sender is
+                responsible for proper packing and breakable Goods are carried at owner's risk.</li>
+            <li>Fresh Fruits are carried at the absolute risk of the sender as they are apt to be spoiled in the way.</li>
+            <li>The Company will send Goods at the earliest opportunity in one lot or in part according to their conveniences.</li>
+            <li>The Goods will be delivered to the consignee or his authorised agents after full payment of our all charges.</li>
+            <li>The Goods will be delivered at the destination in the company's godown only, unless settled otherwise in writing.</li>
+            <li>The delivery of the goods will be taken within seven days after its arrival at the destination failing which the same
+                will be liable to demurrage of Rs. 1.25 per Qt. or part there of, per day.</li>
+            <li>If there is any claim on account of the goods receipt, the same will have to be made to the H.O. within 15 days by
+                Regd. Post failing which the same will be considered as null & void.</li>
+            <li>The company takes absolutely no responsibility for delay or losses in transit due to accident, strike or any other
+                cause beyond our control and due to breakdown of vehicle enroute and the consignees thereof.</li>
+            <li>If the Goods of any G.R. does not arrive the destination within a month, the sender should serve the company with
+                a registered notice as otherwise the company will not be responsible for claim or any action.</li>
+            <li>If the consignee does not take delivery within 3 months the company reserves the right of putting the same in public
+                auction and for, the difference of shortage in the dues of the company the same will be recovered from the sender.</li>
+            <li>Any dispute regarding G.R. will be settled at M.Nagar Jurisdiction only & not on any other place.</li>
+            <li>In case the Goods are required to be called back, our company shall not be bound to do so exception conditions
+                acceptable to the company itself.</li>
+            <li>In case of rebooking of Goods the company will not be responsible for any delay or loss & breakage in transit.</li>
+            <li>No action of misappropriation shall be taken against the company if Goods are lost by theft, accident and other
+                default for which the company is not directly responsible.</li>
+            <li>If the consignee accepts parts payment direct from consignee regarding the G.. the company will not be responsible
+                for the balance amount.</li>
+            <li>Company regarding G.R. can be entertained within one year only. After that, case will be considered as time barred</li>
+            <li>No claim will be entertained due to breakage of crockery & other luxury Goods etc.</li>
+        </ol>
+        <h4 style="text-align: right; color: #074a79;">Received Goods specified over leaf.</h4>
+    </div>
+    <div style="width: 100%;border: 2px solid #074a79;border-radius: 10px;margin-top: 10px;">
+        <p style="color: #074a79;font-weight: 600;padding: 10px;"> OUR RESPONSIBILITIES</p>
+        <ul>
+            <li>Soft Behaviour.</li>
+            <li>Quick & Honest service.</li>
+            <li>Competitive Rate</li>
+            <li>Quick settlement of Claims</li>
+            <li>Work under control with our personal attention.</li>
+        </ul>
+    </div>
 </div>
 
 
