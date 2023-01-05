@@ -232,16 +232,16 @@
                                 <p style="height:85px;margin-top: 40px;text-align: center;">{{ $invoice->description }}</p>
                                 <p style="    color: #074a79;
                                 font-weight: 600;
-                                margin: -45px 0 10px 10px; text-align: center">To Pay: {{ $invoice->to_pay }}</p>
+                                margin: -45px 0 10px 10px; text-align: center">Paid/ to pay: {{ $invoice->to_pay }}</p>
                             </div>
                             <div style="width: 20%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
                                 <p style="height:85px;margin-top: 40px;text-align: center;">{{ $invoice->weight }} </p>
                             </div>
                             <div style="width: 10%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                                <p style="height:85px;margin-top: 40px;text-align: center;">{{ $invoice->rate }} </p>
+                                <p style="height:85px;margin-top: 40px;text-align: center;">{{ sprintf('%0.2f', round($invoice->rate, 2)) }} </p>
                             </div>
                             <div style="width: 25%;height: 110px;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                                <p style="height:85px;margin-top: 40px;text-align: center;">{{ ($invoice->weight/100) * $invoice->rate }}</p>
+                                <p style="height:85px;margin-top: 40px;text-align: center;">{{ sprintf('%0.2f', round((($invoice->weight/100) * $invoice->rate), 2)) }}</p>
                                 <p style="width: 90%;
                             border-right: 1px solid #074a79;
                             height: 110px;"></p>
@@ -270,7 +270,7 @@
                             </div>
                             <div style="width: 44%;margin-left:5px">
                                 <div style="width: 97.5%;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;">
-                                    <div style="    width: 30%;
+                                    <div style="    width: 35%;
                                 border-right: 1px solid #074a79;
                                 height: 50px;
                                 display: flex;
@@ -279,7 +279,7 @@
                                 ">
                                         <p style="color: #074a79; font-weight:600;"> WAY EXP.</p>
                                     </div>
-                                    <div style="    width: 63.5%;
+                                    <div style="    width: 58.5%;
                                 border-right: 1px solid #074a79;
                                 height: 50px;
                                 display: flex;
@@ -289,7 +289,7 @@
                                 </div>
 
                                 <div style="width: 97.5%;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;    margin-top: 5px;">
-                                    <div style="    width: 30%;
+                                    <div style="    width: 35%;
                                 border-right: 1px solid #074a79;
                                 height: 50px;
                                 display: flex;
@@ -298,17 +298,17 @@
                                 ">
                                         <p style="color: #074a79; font-weight:600;"> TOTAL</p>
                                     </div>
-                                    <div style="    width: 63.5%;
+                                    <div style="    width: 58.5%;
                                 border-right: 1px solid #074a79;
                                 height: 50px;
                                 display: flex;
                                 justify-content: center;
-                                align-items: center;">{{ ($invoice->weight/100) * $invoice->rate }}</div>
+                                align-items: center;">{{ sprintf('%0.2f', round((($invoice->weight/100) * $invoice->rate), 2)) }}</div>
                                     <div></div>
                                 </div>
 
                                 <div style="width: 97.5%;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;    margin-top: 5px;">
-                                    <div style="    width: 30%;
+                                    <div style="    width: 35%;
                                 border-right: 1px solid #074a79;
                                 height: 50px;
                                 display: flex;
@@ -317,31 +317,31 @@
                                 ">
                                         <p style="color: #074a79; font-weight:600;">ADVANCE </p>
                                     </div>
-                                    <div style="    width: 63.5%;
+                                    <div style="    width: 58.5%;
                                 border-right: 1px solid #074a79;
                                 height: 50px;
                                 display: flex;
                                 justify-content: center;
-                                align-items: center;">{{ $invoice->advance }}</div>
+                                align-items: center;">{{ sprintf('%0.2f', round($invoice->advance, 2)) }}</div>
                                     <div></div>
                                 </div>
 
                                 <div style="width: 97.5%;margin-left:5px;border: 2px solid #074a79;border-radius: 10px;    margin-top: 5px;">
-                                    <div style="    width: 30%;
+                                    <div style="    width: 35%;
                                 border-right: 1px solid #074a79;
                                 height: 50px;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
                                 ">
-                                        <p style="color: #074a79; font-weight:600;"> Rs TO PAY</p>
+                                        <p style="color: #074a79; font-weight:600;"> Rs PAID/ TO PAY</p>
                                     </div>
-                                    <div style="    width: 63.5%;
+                                    <div style="    width: 58.5%;
                                 border-right: 1px solid #074a79;
                                 height: 50px;
                                 display: flex;
                                 justify-content: center;
-                                align-items: center;">{{ (($invoice->weight/100) * $invoice->rate) - $invoice->advance }}</div>
+                                align-items: center;">{{ sprintf('%0.2f', round(((($invoice->weight/100) * $invoice->rate) - $invoice->advance), 2)) }}</div>
                                     <div></div>
                                 </div>
                             </div>
